@@ -1,5 +1,12 @@
-let li = document.getElementsByTagName("li");
-console.log(li);
-// console.log(li[1]);
-li[4].textContent = "hello world";
-li[4].style.fontWeight = "bold";
+// GETELEMENTBYTAGNAME
+
+let list = document.getElementsByTagName('li')
+console.log(list)
+
+// style the color of text(Green)
+list[4].style.color = "green";
+
+// style the fontWeight (Bold)
+list[4].style.fontWeight = "bold";
+
+console.log(list[4]);
