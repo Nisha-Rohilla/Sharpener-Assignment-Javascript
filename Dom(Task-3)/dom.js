@@ -1,41 +1,24 @@
-// console.dir(document);
-// console.log(document.domain);
-// console.log(document.URL);
-// console.log(document.timeline);
-// console.log(document.title);
-// // document.title = "Learning Dom";
+// MANIPULATE THE TITLE
+document.title = "Sharpener";
 
-// console.log(document.doctype);
-// console.log(document.head);
-// console.log(document.body);
-// console.log(document.all);
-// console.log(document.all[10]);
-// // document.all[10].textContent = "hello";
-// console.log(document.forms);
-// console.log(document.forms[0]);
-// console.log(document.links);
+// GETELEMENTBYID //
 
-// #########################
-// Selectors(GETELEMENTBYID)
+var headerTitle = document.getElementById('header-title')
+console.log(headerTitle)
+// headerTitle.style.color = "black"
+// headerTitle.innerHTML = "hello"
+// headerTitle.innerText ="Hello-1"
+// headerTitle.textContent = "Hello-2"
 
-// console.log(document.getElementById("header-title"));
 
-var headerTitle = document.getElementById("header-title");
-var header = document.getElementById("main-header");
-console.log(headerTitle);
-// headerTitle.innerText = "Goodbye";
-// headerTitle.textContent = "Hello";
-// console.log(headerTitle.innerHTML);
-// headerTitle.innerHTML = "<h3>Hello</h3>";
-header.style.borderBottom = "solid 4px black";
-// item.style.color = "green";
-let items = document.getElementsByClassName("list-group-item");
-items[0].style.fontWeight = "bold";
-items[1].style.fontWeight = "bold";
-items[2].style.fontWeight = "bold";
-items[3].style.fontWeight = "bold";
+// the title have a black border
+headerTitle.style.borderBottom = "solid 3px black"
 
-items[0].style.color = "green";
-items[1].style.color = "green";
-items[2].style.color = "green";
-items[3].style.color = "green";
+// GETELEMENT BY CLASSNAME
+// ADD ITEM bold and chage the font color to greeen
+var addItem = document.getElementsByClassName('list-group-item')
+
+for(let i=0; i<addItem.length; i++){
+    addItem[i].style.fontWeight = 'bold'
+    addItem[i].style.color = 'green'
+}
