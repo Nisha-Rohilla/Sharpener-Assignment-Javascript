@@ -1,80 +1,87 @@
-var itemList = document.querySelector("#items");
+// PARENTNODE
+let item = document.getElementById('items')
+console.log(item.parentNode.parentNode.parentNode)
+item.parentNode.style.backgroundColor = "gray"
 
-// parentNode
-// itemList.parentNode.style.backgroundColor = "#f4f4f4";
-// console.log(itemList.parentNode.parentNode.parentNode.parentNode.parentNode);
+// PARENTELEMENT
+let item = document.querySelector('#items');
+console.log(item.parentElement.parentElement.parentElement);
+item.parentElement.style.backgroundColor = "Coral"
 
-// parentElement
+// CHILDNODE
+console.log(item.childNodes);
 
-// itemList.parentElement.style.backgroundColor = "coral";
-// console.log(itemList.parentElement.parentElement.parentElement);
+// CHILDREN
+console.log(item.children);
+item.children[1].style.backgroundColor = "skyblue"
 
-// childNodes
-// console.log(itemList.childNodes);
+// FIRSTCHILD
+console.log(item.firstChild);
 
-// console.log(itemList.children);
-// console.log(itemList.children[1]);
-// itemList.children[1].style.backgroundColor = "yellow";
+// FIRSTELEMENTCHILD 
+console.log(item.firstElementChild);
+item.firstElementChild.textContent = "Hello"
 
-// firstChild
-// console.log(itemList.firstChild);
-// firstElementChild
-// console.log(itemList.firstElementChild);
-// itemList.firstElementChild.textContent = "hello world";
+// LASTCHILD
+console.log(item.lastChild)
 
-// lastChild
-// console.log(itemList.lastChild);
-// lastElementChild
-// console.log(itemList.lastElementChild);
-// itemList.lastElementChild.textContent = "hello 4";
+// LASTELEMENTCHILD
+console.log(item.lastElementChild)
+item.lastElementChild.textContent = "Hello-4"
 
+// SIBLING
 // nextSibling
-// console.log(itemList.nextSibling);
+console.log(item.nextSibling);
+
 // nextElementSibling
-// console.log(itemList.nextElementSibling);
+console.log(item.nextElementSibling);
 
-// perviousSibling
-// console.log(itemList.previousSibling);
-// previousElementSibling
-// console.log(itemList.previousElementSibling);
-// itemList.previousElementSibling.style.color = "green";
+// previousSibling
+console.log(item.previousSibling);
 
-// createElement
+// previousElementSIbling
+console.log(item.previousElementSibling);
+item.previousElementSibling.style.color ="green"
 
-// Create a div
-// let newDiv = document.createElement("div");
+// Create Element
+// create a div
+var newDiv = document.createElement('div')
+console.log(newDiv);
 
-// Add class
-// newDiv.className = "hello";
+// Add a Class
+newDiv.className = 'Hello';
 
-// Add id
-// newDiv.id = "hello1";
+// Add a Id
+newDiv.id ='Hello-1'
 
-// Add attr
-// newDiv.setAttribute("title", "Hello Div");
+// Add Attribute
+newDiv.setAttribute('title' , 'Hello Div')
+newDiv.style.fontSize = '30px';
+newDiv.style.fontWeight ='bold'
 
-// Create text node
-// var newDivText = document.createTextNode("Hello");
+// Create a TextNode
+var newDivText = document.createTextNode("Hello world");
 
-// Add text to div
-// newDiv.appendChild(newDivText);
+// Add Text to div
+newDiv.appendChild(newDivText)
 
-// var container = document.querySelector("header .container");
-// var h1 = document.querySelector("header h1");
+var container = document.querySelector('header .container');
+let heding = document.querySelector('header h1')
 
-// console.log(newDiv);
+container.insertBefore(newDiv,h1)
 
-// newDiv.style.fontSize = "30px";
 
-// container.insertBefore(newDiv, h1);
+// Task 
+// go head and add HEllo word before Item Lister
+let container = document.querySelector('header .container')
+let h1 = document.querySelector('header h1')
+let newElement = document.createElement('p');
+let newText = document.createTextNode('Hello');
+newElement.appendChild(newText);
+container.insertBefore(newElement,h1)
 
-let newWord = document.createElement("h1");
-newWord.className = "hello";
-newWord.id = "hello1";
-var newText = document.createTextNode("Hello");
-newWord.appendChild(newText);
-var container = document.querySelector("ul .list-group-item:nth-child(1)");
-var h1 = document.querySelector("ul h1");
-newWord.style.fontSize = "30px";
-container.insertBefore(newWord, h1);
-// item.insertBefore(newDiv);
+// Now go head and add HEllo word before Item 1
+let list = document.querySelector('ul');
+let item_1 = document.querySelector('ul .list-group-item:nth-child(1)');
+list.insertBefore(newElement,item_1);
+
