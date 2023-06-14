@@ -1,46 +1,45 @@
-let form = document.getElementById("addForm");
-let itemList = document.getElementById("items");
+let form = document.getElementById('addForm');
+let items = document.getElementById('items');
 
-// Form submit event
-form.addEventListener("submit", addItem);
-// Delete event
-itemList.addEventListener("click", removeItem);
 
-// Add Item
-function addItem(e) {
+function addItem(e){
   e.preventDefault();
 
-  // Get input value
-  var newItem = document.getElementById("item").value;
+  let newItem = document.getElementById('item').value;
 
-  // create new li element
-  var li = document.createElement("li");
-  // Add class
-  li.className = "list-group-item";
-  //   Add text node with input value
+  // create a [li]
+  let li = document.createElement('li');
+  li.className = 'list-group-item';
   li.appendChild(document.createTextNode(newItem));
 
-  //   create dlt button
-  let dlt = document.createElement("button");
+  // create a button [Delete Button]
+  let dlt = document.createElement('button');
+  dlt.className = 'btn btn-danger btn-sm float-right delete';
+  dlt.appendChild(document.createTextNode('X'));
 
-  //   Add classes to del button
-  dlt.className = "btn btn-danger btn-sm float-right delete";
-  //   Append text node
-  dlt.appendChild(document.createTextNode("X"));
+  // Create a edit button [Edit Button]
+  let edit = document.createElement('button')
+  edit.className = 'btn btn-sm float-right edit';
+  edit.appendChild(document.createTextNode('Edit'))
 
-  // Append button to li
+  // append Delete & Edit Button to created Li
   li.appendChild(dlt);
+  li.appendChild(edit);
 
-  // Append li to list
-  itemList.appendChild(li);
+  // Append created Li to ItemList
+  items.appendChild(li);
 }
 
-// removeItem
 function removeItem(e) {
-  if (e.target.classList.contains("delete")) {
-    if (confirm("Are You Sure?")) {
+  if (e.target.classList.contains('delete')){
+     if(confirm('Are you sure')){
       var li = e.target.parentElement;
-      itemList.removeChild(li);
-    }
+      items.removeChild(li); 
+     }
   }
 }
+
+
+
+form.addEventListener('submit' , addItem);
+items.addEventListener('click' , removeItem)
