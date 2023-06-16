@@ -2,11 +2,11 @@ let myFunc = (e) =>{
   e.preventDefault();
 
   // taking value from Input 
-  let value = document.getElementById('item').value;
+  let value1 = document.getElementById('item').value;
   let value2 = document.getElementById('item2').value;
 
   // make-sure both input have value
-  if(value ==="" && value=== ""){
+  if(value1 == "" && value2==""){
     alert('please fill both inputs')
   }
 
@@ -16,7 +16,7 @@ let myFunc = (e) =>{
     // Add a class
     li.className = "list-group-item";
     // create Textnode
-    let liText = document.createTextNode(`${value} ${value2}`);
+    let liText = document.createTextNode(`${value1} ${value2}`);
     li.appendChild(liText);
 
     // Create edit button
@@ -47,7 +47,7 @@ let deleteItem = (e) =>{
   }
 }
 
-// serach item in list (it is present or not)
+// serach item in list (item is present or not)
 let filterItem =(e)=>{
   let text = e.target.value.toLowerCase()
   let items = list.getElementsByTagName('li');
