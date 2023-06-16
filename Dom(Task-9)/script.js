@@ -1,53 +1,78 @@
-let form = document
-  .getElementById("addForm")
-  .addEventListener("submit", Myfunc);
-
-let list = document.getElementById("items");
-list.addEventListener("click", deleteItem);
-
-function Myfunc(e) {
+let myFunc = (e) =>{
   e.preventDefault();
-  let value = document.getElementById("item").value;
-  let value2 = document.getElementById("item2").value;
-  if (value === "" || value2 == "") {
-    alert("please fill both inputs");
-  } else {
-    let li = document.createElement("li");
+
+  // taking value from Input 
+  let value = document.getElementById('item').value;
+  let value2 = document.getElementById('item2').value;
+
+  // make-sure both input have value
+  if(value ==="" && value=== ""){
+    alert('please fill both inputs')
+  }
+
+  // When both inputs have value
+  else{
+    let li = document.createElement('li');
+    // Add a class
     li.className = "list-group-item";
-    li.innerText = value + " " + value2;
-    let editButton = document.createElement("button");
-    editButton.innerHTML = "<span class='bi bi-pencil'></span>";
-    editButton.className = "btn btn-primary btn-sm float-right mx-1 edit";
-    let deleteButton = document.createElement("button");
-    deleteButton.innerText = "X";
-    deleteButton.className = "btn btn-danger btn-sm float-right delete";
-    li.append(deleteButton, editButton);
-    list.append(li);
+    // create Textnode
+    let liText = document.createTextNode(`${value} ${value2}`);
+    li.appendChild(liText);
+
+    // Create edit button
+    let editBtn = document.createElement('button');
+    editBtn.className = "btn btn-primary btn-sm float-right mx-1 edit";
+    editBtn.innerHTML= `<span class='bi bi-pencil'></span>`
+
+    // Create Delete button
+    let dltBtn = document.createElement('button');
+    dltBtn.className = "btn btn-danger btn-sm float-right delete";
+    let dltBtnText = document.createTextNode('X')
+    dltBtn.appendChild(dltBtnText);
+
+    // Append edit and delete button to li 
+    li.append(dltBtn,editBtn)
+    list.appendChild(li)
   }
 }
 
-function deleteItem(e) {
-  if (e.target.classList.contains("delete")) {
-    if (confirm("Are You Sure")) {
+
+// remove Item from list
+let deleteItem = (e) =>{
+  if(e.target.classList.contains('delete')){
+    if(confirm('Are you sure')){
       let li = e.target.parentElement;
-      list.removeChild(li);
+      list.removeChild(li)
     }
   }
 }
 
-let filter = document.getElementById("filter");
-filter.addEventListener("keyup", filterItems);
+// serach item in list (it is present or not)
+let filterItem =(e)=>{
+  let text = e.target.value.toLowerCase()
+  let items = list.getElementsByTagName('li');
 
-function filterItems(e) {
-  let text = e.target.value.toLowerCase();
-  let items = list.getElementsByTagName("li");
-  console.log("items:", items);
-  Array.from(items).forEach((el) => {
-    let itemName = el.firstChild.textContent;
-    if (itemName.toLowerCase().indexOf(text) != -1) {
-      el.style.display = "block";
-    } else {
-      el.style.display = "none";
+  // convert to an array
+  Array.from(items).forEach(function(e){
+    let itemName = e.firstChild.textContent;
+    // console.log(itemName);
+    if(itemName.toLocaleLowerCase().indexOf(text) != -1){
+      e.style.display ="block"
     }
-  });
+    else{
+      e.style.display ="none"
+    }
+  })
 }
+
+// add event
+let form = document.getElementById('addForm');
+form.addEventListener('submit' , myFunc);
+
+// delete event
+let list = document.getElementById('items');
+list.addEventListener('click', deleteItem);
+
+// filter event
+let filter = document.getElementById('filter')
+filter.addEventListener('keyup' , filterItem);
