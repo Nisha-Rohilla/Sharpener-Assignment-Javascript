@@ -1,4 +1,4 @@
-let myFunc = (e) =>{
+let myFunc = (e) => {
   e.preventDefault();
 
   // taking value from Input 
@@ -6,7 +6,7 @@ let myFunc = (e) =>{
   let value2 = document.getElementById('item2').value;
 
   // make-sure both input have value
-  if(value1 == "" && value2==""){
+  if(value1 == "" || value2==""){
     alert('please fill both inputs')
   }
 
@@ -76,3 +76,4 @@ list.addEventListener('click', deleteItem);
 // filter event
 let filter = document.getElementById('filter')
 filter.addEventListener('keyup' , filterItem);
+

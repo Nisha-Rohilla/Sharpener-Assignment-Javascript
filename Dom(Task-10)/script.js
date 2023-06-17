@@ -1,4 +1,5 @@
-let form = document.querySelector("form").addEventListener("submit", myfun);
+let form = document.querySelector("form");
+form.addEventListener("submit", myfun);
 function myfun(e) {
   e.preventDefault();
   let inputName = document.querySelector("#name");
