@@ -18,7 +18,8 @@ function myfun(e) {
       Phone: inputNumber.value,
     };
 
-    localStorage.setItem("userDetails", JSON.stringify(userDetails));
+    let storage = JSON.stringify(userDetails);
+    localStorage.setItem("userDetails",storage);
 
     alert("Registration Done Please Check Local Storage");
     inputName.value = " ";
