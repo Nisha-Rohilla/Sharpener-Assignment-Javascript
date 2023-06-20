@@ -1,29 +1,68 @@
-let form = document.querySelector("form").addEventListener("submit", myFun);
+let form = document.querySelector("form")
+form.addEventListener("submit", myFun);
+
+let name = document.getElementById('name');
+let email = document.getElementById('email');
+let phn = document.getElementById('phone');
+
 
 function myFun(e) {
   e.preventDefault();
-  let name = e.target.Uname.value;
-  let email = e.target.Uemail.value;
-  let pho = e.target.Unumber.value;
-
   const obj = {
-    name,
-    email,
-    pho,
+    Name: name.value,
+    Email: email.value,
+    Phone: phn.value,
   };
-  localStorage.setItem(obj.email, JSON.stringify(obj));
-  let user = document.getElementById("user");
-  let li = document.createElement("li");
-  let dltbtn = document.createElement("button");
-  dltbtn.innerText = "DELETE";
-  dltbtn.addEventListener("click", dltBtn);
 
-  function dltBtn(e) {
+  // storing data into localStorage 
+  localStorage.setItem(obj.Email, JSON.stringify(obj));
+  let user = document.getElementById("user");
+
+  let table = document.getElementById("table")
+
+  // creating table body
+  let t_body = document.createElement("tbody")
+
+  // creating table row
+  let row = document.createElement("tr")
+
+  // creating table td
+  let td = document.createElement("td")
+  let td2 = document.createElement("td")
+  let td3 = document.createElement("td")
+
+  // append text to the td
+  td.innerText = name.value;
+  td2.innerText = email.value;
+  td3.innerText = phn.value;
+  
+  // create a Button
+  let dltBtn = document.createElement('button');
+  dltBtn.innerText = "Delete";
+  dltBtn.addEventListener('click', dlt);
+
+  // append td and dltbtn to row
+  row.append(td, td2, td3, dltBtn);
+
+  // append row to table body
+  t_body.append(row);
+
+  // append body to table 
+  table.append(t_body);
+   
+  // append table to div 
+  user.append(table)
+
+  e.target.name.value ="";
+  e.target.email.value = "";
+  e.target.phone.value ="";
+
+  // create dlt function 
+  function dlt(e) {
     e.target.parentNode.remove();
-    let obj2 = localStorage.removeItem(obj.email);
+    let obj2 = localStorage.removeItem(obj.Email);
   }
 
-  li.innerText = obj.name + " " + obj.email + " " + obj.pho;
-  li.append(dltbtn);
-  user.append(li);
 }
+
+
