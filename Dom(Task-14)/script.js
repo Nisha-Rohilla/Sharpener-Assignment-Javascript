@@ -1,62 +1,83 @@
-let form = document.querySelector("form").addEventListener("submit", myFun);
+let form = document.querySelector("form");
+form.addEventListener("submit", myFun);
+
+let name1 = document.getElementById("name");
+let email = document.getElementById("email");
+let phone = document.getElementById("phone");
 
 function myFun(e) {
   e.preventDefault();
-  e.preventDefault();
-  let name = e.target.name;
-  let email = e.target.email;
-  let pho = e.target.phone;
-
+  
   const obj = {
-    name: name.value,
-    email: email.value,
-    pho: pho.value,
+    Name: name1.value,
+    Email: email.value,
+    Phone: phone.value,
   };
-  localStorage.setItem(obj.email, JSON.stringify(obj));
+  
+  // Storing data into LocalStorage
+  localStorage.setItem(obj.Email, JSON.stringify(obj));
+
   let user = document.getElementById("user");
-  let table = document.createElement("table");
-  let thead = document.createElement("thead");
+  let table = document.getElementById("table")
+
+  // create table body
   let tbody = document.createElement("tbody");
-  let deleteBtn = document.createElement("button");
-  let editBtn = document.createElement("button");
-  deleteBtn.innerText = "Delete";
-  editBtn.innerText = "Edit";
-  editBtn.style.margin = "12px";
-  deleteBtn.addEventListener("click", dltFun);
-  editBtn.addEventListener("click", editFun);
+
+  // create table row
   let tr = document.createElement("tr");
-  let tr2 = document.createElement("tr");
-  let th = document.createElement("th");
-  let th2 = document.createElement("th");
-  let th3 = document.createElement("th");
+
+  //  create table td
   let td = document.createElement("td");
   let td2 = document.createElement("td");
   let td3 = document.createElement("td");
-  td.innerText = name.value;
-  td2.innerText = email.value;
-  td3.innerText = pho.value;
-  tr2.append(td, td2, td3);
-  tbody.append(tr2);
-  th.innerText = "Name";
-  th2.innerText = "Email";
-  th3.innerText = "Phone-No";
-  tr.append(th, th2, th3, deleteBtn, editBtn);
-  thead.append(tr);
-  table.append(thead, tbody);
-  user.append(table);
+
+  td.innerText = e.target.name.value;
+  td2.innerText =e.target.email.value;
+  td3.innerText = e.target.phone.value;
+
+  // create Delete Button
+  let deleteBtn = document.createElement("button");
+  deleteBtn.innerText = "Delete";
+
+  // Create Edit button
+  let editBtn = document.createElement("button");
+  editBtn.innerText = "Edit";
+  
+  // Add event on delete button
+  deleteBtn.addEventListener("click", dltFun);
+  let dlttd=document.createElement("td")
+  dlttd.appendChild(deleteBtn);
+
+  // Add event on edit button
+  editBtn.addEventListener("click", editFun);
+  let edittd=document.createElement("td")
+  edittd.appendChild(editBtn);
+
+  // append [td, td2, td3, deleteBtn, editBtn] into Table row
+  tr.append(td, td2, td3, dlttd, edittd);
+
+  // append table row into table body 
+  tbody.append(tr);
+
+ 
+  table.appendChild(tbody);
+  user.appendChild(table);
 
   function dltFun(e) {
-    e.target.parentNode.remove();
-    table.style.display = "none";
-    localStorage.removeItem(obj.email);
+    e.target.parentNode.parentNode.remove();
+    localStorage.removeItem(obj.Email);
   }
 
   function editFun(e) {
-    e.target.parentNode.remove();
-    table.style.display = "none";
-    let obj2 = JSON.parse(localStorage.getItem(obj.email));
-    name.value = obj2.name;
-    email.value = obj2.email;
-    pho.value = obj2.pho;
+    name1.value = obj.Name;
+    email.value = obj.Email;
+    phone.value = obj.Phone;
+
+    e.target.parentNode.parentNode.remove();
+    localStorage.removeItem(obj.Email);
+
   }
+  e.target.name.value="";
+  e.target.email.value="";
+  e.target.phone.value="";
 }

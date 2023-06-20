@@ -43,16 +43,26 @@
     <h1 style="text-align: center">Booking App</h1>
     <form>
       <div>
-        <label for="">Name</label>
-        <input type="text" placeholder="Enter Name" name="name" />
-        <label for="">Email</label>
-        <input type="email" placeholder="Enter email" name="email" />
-        <label for="">Phone-No</label>
-        <input type="number" placeholder="Enter Phone-No" name="phone" />
+        <label for="name">Name</label>
+        <input type="text" placeholder="Enter Name" id="name"/>
+        <label for="email">Email</label>
+        <input type="email" placeholder="Enter email" name="email" id="email" />
+        <label for="phone">Phone-No</label>
+        <input type="number" placeholder="Enter Phone-No" name="phone" id="phone"/>
       </div>
       <input type="submit" value="Submit" />
     </form>
-    <div id="user" style="text-align: center"></div>
+    <div id="user" style="text-align: center">
+      <table id="table">
+        <thead id="thead">
+          <th id="th1">Name</th>
+          <th id="th2">Email</th>
+          <th id="th3">Phone-No</th>
+          <th id="dltbtn">Delete</th>
+          <th id="editbtn">Edit</th>
+        </thead>
+      </table>
+    </div>
   </body>
   <script src="./script.js"></script>
 </html>
