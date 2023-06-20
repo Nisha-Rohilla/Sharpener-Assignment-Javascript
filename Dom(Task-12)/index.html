@@ -1,58 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      input {
-        height: 34px;
-      }
-      form div {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
-      }
-      input[type="submit"] {
-        display: block;
-        margin: 2% auto;
-        padding: 2px 32px;
-        background-color: transparent;
-        cursor: pointer;
-      }
-      table {
-        font-family: Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 60%;
-        margin: auto;
-        margin-top: 50px;
-        text-align: center;
-      }
 
-      table td,
-      table th {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-    <h1 style="text-align: center">Booking App</h1>
-    <form>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+</head>
+<style>
+  input {
+    height: 34px;
+  }
+
+  form div {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input[type="submit"] {
+    display: block;
+    margin: 2% auto;
+    padding: 2px 32px;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  table td,
+  table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+</style>
+
+<body>
+  <h1 style="text-align: center">Booking App</h1>
+  <form id="form">
+    <fieldset>
+      <legend>User Deatils</legend>
       <div>
-        <label for="">Name</label>
+        <label for="name">Name</label>
         <input type="text" placeholder="Enter Name" id="name" />
-        <label for="">Email</label>
+        <label for="email">Email</label>
         <input type="email" placeholder="Enter email" id="email" />
-        <label for="">Phone-No</label>
+        <label for="phone">Phone-No</label>
         <input type="number" placeholder="Enter Phone-No" id="phone" />
       </div>
       <input type="submit" value="Submit" />
-    </form>
-    <div id="user" style="text-align: center"></div>
-  </body>
-  <script src="./script.js"></script>
+    </fieldset>
+  </form>
+  <div id="user" style="text-align: center">
+    <table id="table">
+  <thead>
+    <th id="head1">Name</th>
+    <th id="head2">Email</th>
+    <th id="head3">Phone_No.</th>
+  </thead>
+</table>
+  </div>
+</body>
+<script src="./script.js"></script>
+
 </html>

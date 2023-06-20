@@ -1,43 +1,56 @@
-let form = document.querySelector("form").addEventListener("submit", myFun);
+let form = document.querySelector("form");
+form.addEventListener('submit', userDetails)
 
-function myFun(e) {
+// access user information
+let name = document.getElementById("name");
+let email = document.getElementById("email");
+let phone_no = document.getElementById("phone");
+
+function userDetails(e) {
   e.preventDefault();
-  let name = document.getElementById("name");
-  let email = document.getElementById("email");
-  let phone = document.getElementById("phone");
 
-  let userDeatils = {
+  // store user details in object
+  let userInfo = {
     Name: name.value,
     Email: email.value,
-    Phone: phone.value,
-  };
+    Phone_no: phone_no.value,
+  }
 
-  localStorage.setItem(
-    JSON.stringify(email.value),
-    JSON.stringify(userDeatils)
-  );
-  let user = document.getElementById("user");
-  let table = document.createElement("table");
-  let thead = document.createElement("thead");
-  let tbody = document.createElement("tbody");
-  let tr = document.createElement("tr");
-  let tr2 = document.createElement("tr");
-  let th = document.createElement("th");
-  let th2 = document.createElement("th");
-  let th3 = document.createElement("th");
-  let td = document.createElement("td");
-  let td2 = document.createElement("td");
-  let td3 = document.createElement("td");
-  td.innerText = name.value;
-  td2.innerText = email.value;
-  td3.innerText = phone.value;
-  tr2.append(td, td2, td3);
-  tbody.append(tr2);
-  th.innerText = "Name";
-  th2.innerText = "Email";
-  th3.innerText = "Phone-No";
-  tr.append(th, th2, th3);
-  thead.append(tr);
-  table.append(thead, tbody);
-  user.append(table);
+  // storing userInfo into the LocalStorage 
+  localStorage.setItem(JSON.stringify(email.value), JSON.stringify(userInfo));
+
+  let user = document.getElementById('user');
+
+ 
+  let table = document.getElementById('table');
+
+   // creating new Element 
+  // Table body
+  let t_body = document.createElement('tbody');
+
+  // create table row
+  let t_row2 = document.createElement('tr');
+
+  // creating table data
+  let td = document.createElement('td');
+  let td1 = document.createElement('td');
+  let td2 = document.createElement('td');
+
+  // append innerText in the TD
+  td.innerText = e.target.name.value;
+  td1.innerText = e.target.email.value;
+  td2.innerText = e.target.phone.value;
+
+  // append table data to table row-2
+  t_row2.append(td, td1, td2);
+
+  // append table row-2 to table body
+  t_body.append(t_row2);
+
+  // append Table [Body & head] in the table
+  table.append(t_body);
+
+  e.target.name.value = "";
+  e.target.email.value = "";
+  e.target.phone.value = "";
 }
